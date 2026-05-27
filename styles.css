@@ -85,7 +85,7 @@ body::before {
 
 /* Hide default cursor on desktop to show only the cat */
 @media (hover: hover) and (pointer: fine) {
-    .kursor, .raton {
+    .kursor, .raton, .magnifier-lens {
         display: block;
     }
     html, body, a, button, input, textarea, select, .painting-card, .filter-btn, .mobile-toggle, .lightbox-close, .lightbox-left img {
@@ -696,6 +696,7 @@ img {
 }
 
 .magnifier-lens {
+    display: none;
     position: absolute;
     width: 150px;
     height: 150px;
