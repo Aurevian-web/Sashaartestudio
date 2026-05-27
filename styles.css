@@ -889,16 +889,16 @@ img {
     }
     
     .lightbox-left {
-        height: 40%;
+        height: 62%;
     }
     
     .lightbox-left img {
-        padding: 1rem;
+        padding: 0.8rem;
     }
     
     .lightbox-right {
-        height: 60%;
-        padding: 2rem;
+        height: 38%;
+        padding: 1.2rem;
     }
 }
 
