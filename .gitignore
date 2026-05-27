@@ -1,0 +1,8 @@
+.DS_Store
+*.pdf
+*.zip
+*.code-workspace
+node_modules/
+dist/
+.env
+.env.local

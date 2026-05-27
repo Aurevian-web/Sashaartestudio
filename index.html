@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SashArt Estudio | Portafolio de Arte Minimalista</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portafolio de arte minimalista por Sasha. Obras abstractas originales a la venta inspiradas en texturas naturales, luz y silencio. Encuentra tu lienzo ideal.">
+    <meta name="keywords" content="arte minimalista, cuadros abstractos, portafolio de arte, oleo sobre lienzo, decoracion interiores, sasha art, galeria de arte">
+    <meta name="author" content="Sasha">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SashArt Estudio | Portafolio de Arte Minimalista">
+    <meta property="og:description" content="Explora lienzos abstractos con texturas orgánicas y colores naturales creados por Sasha. Colecciones disponibles para adquisición.">
+    <meta property="og:image" content="PHOTO-2026-05-26-00-16-53.jpg">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Artist",
+      "name": "Sasha",
+      "description": "Artista visual especializada en pintura abstracta minimalista y texturas naturales.",
+      "image": "PHOTO-2026-05-26-00-16-53.jpg",
+      "knowsAbout": ["Pintura abstracta", "Minimalismo", "Texturas orgánicas"],
+      "brand": {
+        "@type": "Brand",
+        "name": "SashArt Estudio"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo" id="logo-nav">
+                <span class="logo-text">Sasha</span>
+            </a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <button class="mobile-toggle" aria-label="Abrir menú" aria-expanded="false" id="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content container">
+                <h1>Arte que respira</h1>
+                <p>Pintar lo que las palabras no alcanzan a decir.</p>
+                <a href="#gallery" class="btn">Ver Colección</a>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery section">
+            <div class="container">
+                <h2 class="section-title">Obras Disponibles</h2>
+                
+                <!-- Category Filters -->
+                <div class="gallery-filters" id="filters-container">
+                    <button class="filter-btn active" data-filter="all" id="filter-all">Todos</button>
+                    <button class="filter-btn" data-filter="grande" id="filter-grande">Gran Formato</button>
+                    <button class="filter-btn" data-filter="mediano" id="filter-mediano">Mediano / Pequeño</button>
+                    <button class="filter-btn" data-filter="privada" id="filter-privada">Colección Privada</button>
+                </div>
+
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Gallery items injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section">
+            <div class="container about-grid">
+                <div class="about-image-container">
+                    <img src="PHOTO-2026-05-26-00-16-53.jpg" alt="Sasha en su estudio de arte" class="about-image" id="artist-img">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Sobre Mí</h2>
+                    <p><strong>Soy Sasha.</strong> Nací en Bielorrusia, pero hace diez años dejé atrás lo predecible para hacer de Chile mi caos creativo. En esta tierra de contrastes salvajes y luz cruda, encontré el detonante perfecto para romper con las reglas de la academia y consagrar mi vida a un arte que no pide permiso para existir.</p>
+                    <p>Mis obras hablan más de estados que de historias; no intento explicarlo todo, prefiero que cada persona que observe un lienzo sienta y construya su propio significado. En mis pinturas no encontrarás respuestas directas, sino una invitación a explorar sensaciones internas y silencios que cuesta decir con palabras, pero que se reconocen inmediatamente por dentro.</p>
+                    <p>Para mí, lo más importante es que cada pieza tenga su propio carácter y alma. No persigo la perfección técnica como fin último, sino la honestidad en el trazo y la sensación profunda que la obra deja en el espacio. No busco pintar algo puramente "bonito", sino la verdad de lo genuino.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <p class="contact-intro">¿Interesado en una obra o comisión personalizada? Escríbeme directamente.</p>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre qué obra deseas consultar..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit" id="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 SashArt Estudio. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/sashaartestudio" id="social-ig" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox" aria-modal="true" role="dialog">
+        <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar vista">&times;</button>
+        <div class="lightbox-content">
+            <div class="lightbox-left">
+                <img id="lightbox-img" src="" alt="">
+                <div id="magnifier-lens" class="magnifier-lens"></div>
+            </div>
+            <div class="lightbox-right">
+                <div class="lightbox-header">
+                    <span id="lightbox-status" class="lightbox-status">Disponible</span>
+                    <h2 id="lightbox-title" class="lightbox-title">Título de la Obra</h2>
+                </div>
+                
+                <div class="lightbox-metadata">
+                    <div class="meta-item">
+                        <span class="meta-label">Técnica</span>
+                        <span id="lightbox-tech" class="meta-val">—</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Dimensiones</span>
+                        <span id="lightbox-dims" class="meta-val">—</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Año</span>
+                        <span id="lightbox-year" class="meta-val">—</span>
+                    </div>
+                </div>
+                
+                <div class="lightbox-footer">
+                    <div class="lightbox-price-tag">
+                        <span class="price-label">Valor</span>
+                        <span id="lightbox-price" class="price-val">—</span>
+                    </div>
+                    <button id="lightbox-inquire-btn" class="btn btn-inquire">Solicitar Información</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
