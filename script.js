@@ -130,6 +130,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dimensions: '80 x 40 cm',
             year: '2025',
             status: 'Colección Privada'
+        },
+        {
+            id: 10,
+            title: 'Mejor no saber',
+            price: '$500.000',
+            image: 'extracted_img_10.png',
+            category: 'mediano',
+            technique: 'Óleo sobre lienzo',
+            dimensions: '70 x 50 cm',
+            year: '2026',
+            status: 'Disponible'
         }
     ];
 
