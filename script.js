@@ -152,6 +152,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dimensions: '80 x 70 cm',
             year: '2026',
             status: 'Disponible'
+        },
+        {
+            id: 12,
+            title: 'Máscaras ocultas',
+            price: '$500.000',
+            image: 'extracted_img_12.png',
+            category: 'grande',
+            technique: 'Óleo sobre lienzo',
+            dimensions: '90 x 50 cm',
+            year: '2026',
+            status: 'Disponible'
         }
     ];
 
