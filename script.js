@@ -163,6 +163,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dimensions: '90 x 50 cm',
             year: '2026',
             status: 'Disponible'
+        },
+        {
+            id: 13,
+            title: 'Caos gatuno',
+            price: 'Vendido',
+            image: 'extracted_img_13.png',
+            category: 'privada',
+            technique: 'Óleo sobre lienzo',
+            dimensions: '60 x 50 cm',
+            year: '2026',
+            status: 'Colección Privada'
         }
     ];
 
