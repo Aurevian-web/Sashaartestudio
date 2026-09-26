@@ -221,21 +221,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Magnifier Lens Logic
+    // Magnifier Lens Logic (Desktop, Tablet & Mobile)
     const magnifierLens = document.getElementById('magnifier-lens');
 
     if (lightboxImg && magnifierLens) {
-        lightboxImg.addEventListener('mousemove', (e) => {
+        function updateMagnifier(clientX, clientY, isTouch = false) {
             const rect = lightboxImg.getBoundingClientRect();
             
-            // Mouse position relative to image bounds
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            // Mouse/Touch position relative to image bounds
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
             
+            // Hide lens if cursor/finger moves out of image bounds
+            if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
+                magnifierLens.style.opacity = '0';
+                return;
+            }
+
             // Position lens relative to parent container (.lightbox-left)
             const parentRect = lightboxImg.parentElement.getBoundingClientRect();
-            const lensX = (rect.left - parentRect.left) + x - 75; // 75 is half lens width
-            const lensY = (rect.top - parentRect.top) + y - 75; // 75 is half lens height
+            
+            const lensWidth = magnifierLens.offsetWidth || 130;
+            const lensHeight = magnifierLens.offsetHeight || 130;
+            const halfWidth = lensWidth / 2;
+            const halfHeight = lensHeight / 2;
+
+            // On touch screens, offset Y upwards so finger does not cover the lens view
+            const offsetY = isTouch ? (halfHeight + 40) : halfHeight;
+            
+            const lensX = (rect.left - parentRect.left) + x - halfWidth;
+            const lensY = (rect.top - parentRect.top) + y - offsetY;
             
             magnifierLens.style.left = lensX + 'px';
             magnifierLens.style.top = lensY + 'px';
@@ -249,9 +264,35 @@ document.addEventListener('DOMContentLoaded', () => {
             magnifierLens.style.backgroundSize = `${rect.width * 2.5}px ${rect.height * 2.5}px`; // 2.5x Zoom factor
             magnifierLens.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
             magnifierLens.style.opacity = '1';
+        }
+
+        lightboxImg.addEventListener('mousemove', (e) => {
+            updateMagnifier(e.clientX, e.clientY, false);
         });
         
         lightboxImg.addEventListener('mouseleave', () => {
+            magnifierLens.style.opacity = '0';
+        });
+
+        // Touch support for Mobile & Tablet
+        lightboxImg.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                updateMagnifier(e.touches[0].clientX, e.touches[0].clientY, true);
+            }
+        }, { passive: true });
+
+        lightboxImg.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 1) {
+                if (e.cancelable) e.preventDefault();
+                updateMagnifier(e.touches[0].clientX, e.touches[0].clientY, true);
+            }
+        }, { passive: false });
+
+        lightboxImg.addEventListener('touchend', () => {
+            magnifierLens.style.opacity = '0';
+        });
+
+        lightboxImg.addEventListener('touchcancel', () => {
             magnifierLens.style.opacity = '0';
         });
     }
