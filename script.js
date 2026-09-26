@@ -141,6 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dimensions: '70 x 50 cm',
             year: '2026',
             status: 'Disponible'
+        },
+        {
+            id: 11,
+            title: 'La chica de las margaritas',
+            price: '$500.000',
+            image: 'extracted_img_11.png',
+            category: 'mediano',
+            technique: 'Óleo sobre lienzo',
+            dimensions: '80 x 70 cm',
+            year: '2026',
+            status: 'Disponible'
         }
     ];
 
