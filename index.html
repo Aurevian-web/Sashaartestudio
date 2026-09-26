@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3.0">
+    <link rel="stylesheet" href="styles.css?v=4.0">
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -75,12 +75,9 @@
             <div class="container">
                 <h2 class="section-title">Obras Disponibles</h2>
                 
-                <!-- Category Filters -->
+                <!-- Dynamic Characteristics Filters -->
                 <div class="gallery-filters" id="filters-container">
-                    <button class="filter-btn active" data-filter="all" id="filter-all">Todos</button>
-                    <button class="filter-btn" data-filter="grande" id="filter-grande">Gran Formato</button>
-                    <button class="filter-btn" data-filter="mediano" id="filter-mediano">Mediano / Pequeño</button>
-                    <button class="filter-btn" data-filter="privada" id="filter-privada">Colección Privada</button>
+                    <!-- Dynamic filters injected by JS based on real painting dimensions & status -->
                 </div>
 
                 <div class="gallery-grid" id="gallery-grid">
@@ -179,7 +176,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=3.0"></script>
+    <script src="script.js?v=4.0"></script>
 </body>
 
 </html>

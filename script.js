@@ -318,19 +318,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render Gallery function
-    function renderGallery(filterCategory = 'all') {
+    // Render Gallery function with real attributes filter support
+    function renderGallery(type = 'all', val = 'all') {
         if (!galleryGrid) return;
         galleryGrid.innerHTML = '';
 
-        const filtered = filterCategory === 'all'
-            ? paintings
-            : paintings.filter(p => p.category === filterCategory);
+        let filtered = paintings;
+        if (type === 'status') {
+            if (val === 'Disponible') {
+                filtered = paintings.filter(p => p.status === 'Disponible');
+            } else if (val === 'private') {
+                filtered = paintings.filter(p => p.status !== 'Disponible');
+            }
+        } else if (type === 'dimension') {
+            filtered = paintings.filter(p => p.dimensions === val);
+        } else if (type === 'technique') {
+            filtered = paintings.filter(p => p.technique === val);
+        }
 
         filtered.forEach(painting => {
             const card = document.createElement('div');
             card.classList.add('painting-card', 'reveal');
-            card.setAttribute('data-category', painting.category);
 
             card.innerHTML = `
                 <div class="painting-image-container">
@@ -342,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="painting-info">
                     <h3 class="painting-title">${painting.title}</h3>
                     <div class="painting-meta-short">
-                        <span class="painting-tech">${painting.technique.split(' ')[0]}</span>
+                        <span class="painting-dims">${painting.dimensions}</span>
                         <span class="painting-dot">•</span>
                         <span class="painting-status ${painting.status === 'Disponible' ? 'status-available' : 'status-private'}">${painting.status}</span>
                     </div>
@@ -359,16 +367,56 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCursorListeners();
     }
 
-    // Filter Buttons logic
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            const category = e.currentTarget.getAttribute('data-filter');
-            renderGallery(category);
+    // Dynamic Filter Buttons Generator based on Real Painting Characteristics
+    function initFilters() {
+        const filtersContainer = document.getElementById('filters-container');
+        if (!filtersContainer) return;
+
+        filtersContainer.innerHTML = '';
+
+        const filterOptions = [
+            { label: 'Todos', type: 'all', val: 'all' },
+            { label: 'Disponibles', type: 'status', val: 'Disponible' }
+        ];
+
+        // Unique Dimensions extracted from actual paintings list
+        const dimensions = [...new Set(paintings.map(p => p.dimensions))].filter(Boolean);
+        dimensions.forEach(dim => {
+            filterOptions.push({
+                label: dim,
+                type: 'dimension',
+                val: dim
+            });
         });
-    });
+
+        // Check if there are sold/private items
+        const hasPrivate = paintings.some(p => p.status !== 'Disponible');
+        if (hasPrivate) {
+            filterOptions.push({
+                label: 'Colección Privada',
+                type: 'status',
+                val: 'private'
+            });
+        }
+
+        filterOptions.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = `filter-btn ${index === 0 ? 'active' : ''}`;
+            btn.textContent = opt.label;
+
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderGallery(opt.type, opt.val);
+            });
+
+            filtersContainer.appendChild(btn);
+        });
+    }
+
+    // Initial render
+    initFilters();
+    renderGallery('all', 'all');
 
     // Custom Cursor logic
     const cursor = document.createElement('div');
