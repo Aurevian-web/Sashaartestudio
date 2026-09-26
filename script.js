@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCursorListeners();
     }
 
-    // Dynamic Filter Buttons Generator based on Real Painting Characteristics
+    // Filter Buttons Generator (Todos & Disponibles)
     function initFilters() {
         const filtersContainer = document.getElementById('filters-container');
         if (!filtersContainer) return;
@@ -378,26 +378,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { label: 'Todos', type: 'all', val: 'all' },
             { label: 'Disponibles', type: 'status', val: 'Disponible' }
         ];
-
-        // Unique Dimensions extracted from actual paintings list
-        const dimensions = [...new Set(paintings.map(p => p.dimensions))].filter(Boolean);
-        dimensions.forEach(dim => {
-            filterOptions.push({
-                label: dim,
-                type: 'dimension',
-                val: dim
-            });
-        });
-
-        // Check if there are sold/private items
-        const hasPrivate = paintings.some(p => p.status !== 'Disponible');
-        if (hasPrivate) {
-            filterOptions.push({
-                label: 'Colección Privada',
-                type: 'status',
-                val: 'private'
-            });
-        }
 
         filterOptions.forEach((opt, index) => {
             const btn = document.createElement('button');
